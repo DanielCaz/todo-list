@@ -1,14 +1,49 @@
-import styles from "../styles/TodoList.module.scss";
 import TodoListItem from "./TodoListItem";
+import styles from "../styles/TodoList.module.scss";
 
-const TodoList = () => {
+const TodoList = ({
+  todoItems,
+  onRemoveTodo,
+  onToggleCompleted,
+  todoFilter,
+}: {
+  todoItems: { id: string; text: string; completed: boolean }[];
+  onRemoveTodo: (id: string) => void;
+  onToggleCompleted: (id: string) => void;
+  todoFilter: string;
+}) => {
   return (
     <div className={styles.container}>
       <ul>
-        <TodoListItem text="Finish this project" />
-        <TodoListItem text="Clean all the dishes and also bla bla" />
-        <TodoListItem text="Lorem ipsum, dolor sit amet consectetur adipisicing elit. Unde, magni. Officiis minus aliquam nihil commodi porro sed maxime, ea quia eaque optio possimus fugiat eos saepe temporibus eius iure esse." />
-        <TodoListItem text="Profit" />
+        {todoItems.map((todoItem) => {
+          return todoFilter === "all" ? (
+            <TodoListItem
+              key={todoItem.id}
+              todoItem={todoItem}
+              onRemoveTodo={onRemoveTodo}
+              onToggleCompleted={onToggleCompleted}
+              todoFilter={todoFilter}
+            />
+          ) : todoFilter === "completed" && todoItem.completed ? (
+            <TodoListItem
+              key={todoItem.id}
+              todoItem={todoItem}
+              onRemoveTodo={onRemoveTodo}
+              onToggleCompleted={onToggleCompleted}
+              todoFilter={todoFilter}
+            />
+          ) : todoFilter === "uncompleted" && !todoItem.completed ? (
+            <TodoListItem
+              key={todoItem.id}
+              todoItem={todoItem}
+              onRemoveTodo={onRemoveTodo}
+              onToggleCompleted={onToggleCompleted}
+              todoFilter={todoFilter}
+            />
+          ) : (
+            <></>
+          );
+        })}
       </ul>
     </div>
   );
