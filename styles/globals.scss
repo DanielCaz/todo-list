@@ -12,6 +12,8 @@ body {
     $gradientStart 0%,
     $gradientEnd 100%
   );
+
+  overflow-x: hidden;
 }
 
 button {

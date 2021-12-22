@@ -5,16 +5,20 @@ const TodoListItem = ({
   todoItem,
   onRemoveTodo,
   onToggleCompleted,
-  todoFilter,
+  index,
 }: {
   todoItem: { id: string; text: string; completed: boolean };
   onRemoveTodo: (id: string) => void;
   onToggleCompleted: (id: string) => void;
-  todoFilter: string;
+  index: number;
 }) => {
   return (
     <div
-      style={todoItem.completed ? { backgroundColor: "#F0F0F0" } : {}}
+      style={
+        todoItem.completed
+          ? { "--order": index, backgroundColor: "#F0F0F0" }
+          : { "--order": index }
+      }
       className={styles.container}
     >
       <li

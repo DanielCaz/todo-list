@@ -31,6 +31,7 @@ export default function Home() {
   }, [auth, router]);
 
   const onGoogleButtonClick = () => {
+    setErrorInfo(null);
     signInWithPopup(auth, provider)
       .then((result) => {
         router.replace("/user");

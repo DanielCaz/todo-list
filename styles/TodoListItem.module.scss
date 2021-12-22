@@ -1,11 +1,23 @@
 @import "./vars";
 
+@keyframes dropIn {
+  from {
+    transform: translateX(100vw);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
 .container {
   @include disFlex(row);
   margin: 1.25rem 1em;
   background: white;
   border: 1px solid lightcoral;
   border-radius: 3px;
+  transform: translateX(100vw);
+  animation: dropIn 1s ease forwards;
+  animation-delay: calc(var(--order) * 100ms);
 
   li {
     flex: 1;

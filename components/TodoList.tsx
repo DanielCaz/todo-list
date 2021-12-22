@@ -12,6 +12,8 @@ const TodoList = ({
   onToggleCompleted: (id: string) => void;
   todoFilter: string;
 }) => {
+  let itemIndex = 0;
+
   return (
     <div className={styles.container}>
       <ul>
@@ -22,7 +24,7 @@ const TodoList = ({
               todoItem={todoItem}
               onRemoveTodo={onRemoveTodo}
               onToggleCompleted={onToggleCompleted}
-              todoFilter={todoFilter}
+              index={itemIndex++}
             />
           ) : todoFilter === "completed" && todoItem.completed ? (
             <TodoListItem
@@ -30,7 +32,7 @@ const TodoList = ({
               todoItem={todoItem}
               onRemoveTodo={onRemoveTodo}
               onToggleCompleted={onToggleCompleted}
-              todoFilter={todoFilter}
+              index={itemIndex++}
             />
           ) : todoFilter === "uncompleted" && !todoItem.completed ? (
             <TodoListItem
@@ -38,7 +40,7 @@ const TodoList = ({
               todoItem={todoItem}
               onRemoveTodo={onRemoveTodo}
               onToggleCompleted={onToggleCompleted}
-              todoFilter={todoFilter}
+              index={itemIndex++}
             />
           ) : (
             <></>
