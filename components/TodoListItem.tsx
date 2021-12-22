@@ -13,14 +13,13 @@ const TodoListItem = ({
   index: number;
 }) => {
   return (
-    <div
-      style={
-        todoItem.completed
-          ? { "--order": index, backgroundColor: "#F0F0F0" }
-          : { "--order": index }
-      }
-      className={styles.container}
-    >
+    <div className={styles.container}>
+      <style jsx>{`
+        div {
+          background-color: ${todoItem.completed ? "#DDD" : "#FFF"};
+          --order: ${index};
+        }
+      `}</style>
       <li
         style={todoItem.completed ? { textDecorationLine: "line-through" } : {}}
       >
