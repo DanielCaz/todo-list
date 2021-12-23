@@ -2,7 +2,7 @@
 
 @keyframes dropIn {
   from {
-    transform: translateX(100vw);
+    transform: translateX(-600px);
   }
   to {
     transform: translateX(0);
@@ -15,7 +15,6 @@
   background: white;
   border: 1px solid lightcoral;
   border-radius: 3px;
-  transform: translateX(100vw);
   animation: dropIn 1s ease forwards;
   animation-delay: calc(var(--order) * 100ms);
 
